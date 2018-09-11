@@ -44,4 +44,43 @@
  	echo $value;
  	echo "<br>";
  }
+ echo "<br>------BAI TAP--------<br>";
+ $arrEx = array('Banh keo', 'Trai cay', 'Do choi');
+ function showProduct($arrEx) {
+ 	echo "<br>--------------<br>";
+ 	foreach ($arrEx as $key => $value) {
+	 	echo $key.' - '.$value.'<br>';
+	 }
+ }
+ showProduct($arrEx);
+ // them Ao quan vao
+ array_push($arrEx, 'Ao Quan');
+ showProduct($arrEx);
+ // sua Banh keo
+ $arrEx[0] = 'Thuc pham';
+ showProduct($arrEx);
+ //xoa trai cay
+ unset($arrEx[1]);
+ showProduct($arrEx);
+ //
+ echo "<br>--------------<br>";
+ $arr3 = array(
+ 			array(
+ 				'name' => 'Khoi',
+ 				'birthday' => 1997,
+ 				'gender' => 'male'
+ 			),
+ 			array(
+ 				'name' => 'Trung',
+ 				'birthday' => 1985,
+ 				'gender' => 'male'
+ 			),
+ 			array(
+ 				'name' => 'Huyen',
+ 				'birthday' => 1987,
+ 				'gender' => 'female'
+ 			),
+
+ 	);
+ var_dump($arr3[2]['birthday']);
 ?>
