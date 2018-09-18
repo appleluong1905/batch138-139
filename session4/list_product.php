@@ -14,10 +14,22 @@
 	table, tr, th, td {
 		border: 1px solid green;
 	}
+	.search{
+		width: 800px;
+		margin: 0 auto;
+		padding-bottom: 50px;
+	}
 	</style>
 </head>
 <body>
 <h1>List product</h1>
+<div class="search">
+	<form >
+		<input type="text" name="name" placeholder="Product name">
+		<input type="text" name="description" placeholder="Product description">
+		<input type="submit" name="search" value="Search">
+	</form>
+</div>
 <table>
 	<tr>
 		<th>ID</th>
@@ -31,7 +43,10 @@
 	</tr>
 <?php 
 	include 'connectdb.php';
-	$sqlSelect = "SELECT * FROM products";
+	$searchName = isset($_GET['name'])?$_GET['name']:"";
+	$searchDes = isset($_GET['description'])?$_GET['description']:"";
+
+	$sqlSelect = "SELECT * FROM products WHERE name LIKE '%$searchName%' AND description LIKE '%$searchDes%'";
 	$result  = mysqli_query($con, $sqlSelect);
 	if ($result->num_rows > 0) { 
 		while($row = $result->fetch_assoc()) {
