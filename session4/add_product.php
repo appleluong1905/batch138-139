@@ -45,9 +45,10 @@
 			$create =  date('Y-m-d h:i:s');
 			$sqlInsert = "INSERT INTO `products`(`name`, `description`, `price`, `discount`, `image`, `created`) VALUES ('$name', '$description', $price, $discount, '$image','$create')";
 			mysqli_query($con, $sqlInsert);
-			
-			echo "Add product success!";
-			echo "<img src ='$targetUpload' alt = 'Image'>";
+
+			//Chuyen trang bang header
+			header("Location: list_product.php");
+			//header("Location: http://google.com");
 		}	
 	}	
 	?>
