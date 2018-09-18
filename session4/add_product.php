@@ -6,6 +6,7 @@
 </head>
 <body>
 	<?php 
+	include 'connectdb.php';
 	$errName = $errDescription = $errPrice 
 	= $errDiscount = $errImage = "";
 	$checkAddProduct = true;
@@ -41,6 +42,10 @@
 			// upload file
 			$targetUpload = "uploads/".$image;
 			move_uploaded_file($imageUpload['tmp_name'], $targetUpload);
+			$create =  date('Y-m-d h:i:s');
+			$sqlInsert = "INSERT INTO `products`(`name`, `description`, `price`, `discount`, `image`, `created`) VALUES ('$name', '$description', $price, $discount, '$image','$create')";
+			mysqli_query($con, $sqlInsert);
+			
 			echo "Add product success!";
 			echo "<img src ='$targetUpload' alt = 'Image'>";
 		}	
