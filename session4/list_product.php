@@ -27,6 +27,7 @@
 		<th>Discount</th>
 		<th>Image</th>
 		<th>Created</th>
+		<th>Action</th>
 	</tr>
 <?php 
 	include 'connectdb.php';
@@ -44,6 +45,10 @@
 		<td><?php echo $row['discount'];?></td>
 		<td><img src="uploads/<?php echo $image?>" alt="image" class="image"></td>
 		<td><?php echo $row['created'];?></td>
+		<td>
+			<a href="#">Edit</a>
+			| <a href="delete.php?id=<?php echo $row['id']?>">Delete</a>
+		</td>
 	</tr>
 
 <?php
