@@ -44,17 +44,17 @@
 <?php 
 	include 'connectdb.php';
 	// count total records
-	$sqlTotal = "SELECT id FROM products";
-	$countTotal = mysqli_query($con, $sqlTotal);
-	$total = $countTotal->num_rows;
 	$limit = 3;
-	$numberPage = ceil($total/$limit);
 	$page = isset($_GET['page'])?$_GET['page']:1;
 	$start = ($page - 1) * $limit;
 
 	$searchName = isset($_GET['name'])?$_GET['name']:"";
 	$searchDes = isset($_GET['description'])?$_GET['description']:"";
-
+	$sqlTotal = "SELECT id FROM products WHERE name LIKE '%$searchName%' AND description LIKE '%$searchDes%'";
+	$countTotal = mysqli_query($con, $sqlTotal);
+	$total = $countTotal->num_rows;
+	
+	$numberPage = ceil($total/$limit);
 	$sqlSelect = "SELECT * FROM products WHERE name LIKE '%$searchName%' AND description LIKE '%$searchDes%' LIMIT $start,$limit";
 	// page 1: SELECT * FROM `products` LIMIT 0,3
 	// page 2: SELECT * FROM `products` LIMIT 3,3
@@ -86,8 +86,9 @@
 ?>
 </table>	
 <?php 
+$link = !empty($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:"";
 	for ($i = 1; $i <= $numberPage; $i++) {
-		echo "<a href='list_product.php?page=$i'>$i</a>";
+		echo "<a href='list_product.php?$link'>$i</a>";
 		echo ($i < $numberPage)?" | ":"";
 	}
 ?>
