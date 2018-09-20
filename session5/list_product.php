@@ -86,11 +86,14 @@
 ?>
 </table>	
 <?php 
-$link = !empty($_SERVER['QUERY_STRING'])?$_SERVER['QUERY_STRING']:"";
-	for ($i = 1; $i <= $numberPage; $i++) {
-		echo "<a href='list_product.php?$link'>$i</a>";
-		echo ($i < $numberPage)?" | ":"";
-	}
+$serverName = $_SERVER['SERVER_NAME'];
+$link = !empty($_SERVER['REQUEST_URI'])?$_SERVER['REQUEST_URI']:"";
+for ($i = 1; $i <= $numberPage; $i++) {
+	$linkPage = "http://$serverName$link&page=$i";
+	echo $linkPage;
+	echo "<a href='$linkPage'>$i</a>";
+	echo ($i < $numberPage)?" | ":"";
+}
 ?>
 </body>
 </html>
