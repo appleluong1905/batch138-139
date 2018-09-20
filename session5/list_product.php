@@ -90,7 +90,6 @@ $serverName = $_SERVER['SERVER_NAME'];
 $link = !empty($_SERVER['REQUEST_URI'])?$_SERVER['REQUEST_URI']:"";
 for ($i = 1; $i <= $numberPage; $i++) {
 	$linkPage = "http://$serverName$link&page=$i";
-	echo $linkPage;
 	echo "<a href='$linkPage'>$i</a>";
 	echo ($i < $numberPage)?" | ":"";
 }
