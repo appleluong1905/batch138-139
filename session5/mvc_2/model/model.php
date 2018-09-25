@@ -6,6 +6,9 @@ class Model {
 	function getNews() {
 		return "<h1>Lay thong tin trang news</h1>";
 	}
+	function getNews2() {
+		return "<h1>Lay thong tin trang news 2</h1>";
+	}
 	function getContact() {
 		return "<h1>Lay thong tin trang contact</h1>";
 	}

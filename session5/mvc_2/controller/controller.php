@@ -13,6 +13,7 @@ class Controller {
 			// co nguoi vao trang News
 			$model = new Model();
 			$view = $model->getNews();
+			$view2 = $model->getNews2();
 			// hien thi du lieu trang News
 			include 'views/viewNews.php';
 		}elseif ($action == 'contact') {
